@@ -1,0 +1,1928 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css');
+
+:root{
+  
+   --yellow:#fed330;
+   --red:#e74c3c;
+   --white:#fff;
+   --black:#222;
+   --light-color:#777;
+   --border:.2rem solid var(--black);
+}
+body {
+   background: linear-gradient(45deg, #FF6347, #1E90FF);
+   color: #fff;
+}
+
+
+
+*{
+   
+    
+   margin:0; padding:0;
+   box-sizing: border-box;
+   outline: none; border: none;
+   text-decoration: none;
+   
+}
+
+*::selection{
+   background-color: var(--yellow);
+   color:var(--black);
+}
+
+::-webkit-scrollbar{
+   height: .5rem;
+   width: 1rem;
+}
+
+::-webkit-scrollbar-track{
+   background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb{
+   background-color: var(--yellow);
+}
+
+html{
+   font-size: 62.5%;
+   overflow-x: hidden;
+   scroll-behavior: smooth;
+   stop-opacity: 7rem;
+}
+
+section{
+   margin:0 auto;
+   max-width: 1200px;
+   padding:2rem;
+}
+
+.title {
+   text-align: center;
+   margin-bottom: 2.5rem;
+   font-size: 4rem;
+   color: #2c3e50;
+   text-transform: uppercase;
+   position: relative;
+   overflow: hidden; /* Añadido para ocultar el subrayado por defecto */
+ }
+ 
+ .title::before,
+ .title::after {
+   content: '';
+   position: absolute;
+   height: 100%;
+   width: 0;
+   bottom: 0;
+   transition: width 0.3s ease-in-out;
+   border-bottom: 8px solid rgb(52, 219, 122); /* Color del subrayado */
+ }
+ 
+ .title::before {
+   left: 50%;
+   transform: translateX(-50%);
+ }
+ 
+ .title::after {
+   right: 50%;
+   transform: translateX(50%);
+ }
+ 
+ .title:hover::before,
+ .title:hover::after {
+   width: 30%; /* Ancho del subrayado al pasar el ratón */
+ }
+ 
+.heading{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   gap:1rem;
+   flex-flow: column;
+   background-color: var(--black);
+   min-height: 20rem;
+}
+   
+.heading h3{
+   font-size: 5rem;
+   color:var(--white);
+   text-transform: capitalize;
+}
+
+.heading p{
+   font-size: 2.3rem;
+   color:var(--light-color);
+}
+
+.heading p a{
+   color:var(--yellow);
+}
+
+.heading p a:hover{
+   text-decoration: underline;
+   color:var(--white);
+}
+
+.btn,
+.delete-btn {
+    margin-top: 1rem;
+    display: inline-block;
+    font-size: 2rem;
+    padding: 1rem 3rem;
+    cursor: pointer;
+    text-transform: capitalize;
+    transition: 0.2s linear;
+}
+
+.btn:hover,
+.delete-btn:hover {
+    transform: scale(1.05); /* Cambia el tamaño al pasar el ratón por encima */
+    background-color: var(--yellow); /* Cambia el color al pasar el ratón por encima */
+    color: var(--black); /* Cambia el color al pasar el ratón por encima */
+}
+
+
+.btn {
+   background: linear-gradient(135deg, #ffcc00, #ff6600);
+   color: #fff;
+   border: 6px solid #00ffff;
+   padding: 15px 30px;
+   font-size: 1.8rem;
+   border-radius: 75px;
+   cursor: pointer;
+   transition: background 0.5s, color 0.5s, transform 0.3s, letter-spacing 0.3s, box-shadow 0.3s;
+   text-transform: uppercase;
+   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover {
+   background: linear-gradient(135deg, #56a836, #912991);
+   color: #fff;
+   transform: scale(1.05) rotate(10deg);
+   letter-spacing: 0.3rem;
+   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+   animation: shake 0.5s ease infinite;
+}
+
+@keyframes shake {
+   0% { transform: translateX(0); }
+   20% { transform: translateX(-5px) rotate(-5deg); }
+   40% { transform: translateX(5px) rotate(5deg); }
+   60% { transform: translateX(-5px) rotate(-5deg); }
+   80% { transform: translateX(5px) rotate(5deg); }
+   100% { transform: translateX(0); }
+}
+
+
+.delete-btn {
+   background-color: var(--red);
+   color: var(--white);
+   border: none;
+   padding: 15px 30px;
+   font-size: 1.8rem;
+   border-radius: 5px;
+   cursor: pointer;
+   transition: background-color 0.3s, color 0.3s, letter-spacing 0.2s;
+   text-transform: uppercase;
+}
+
+.btn:hover,
+.delete-btn:hover {
+   background-color:#e74c3c ; /* Cambia el color al pasar el ratón por encima */
+   color: var(--black); /* Cambia el color al pasar el ratón por encima */
+   letter-spacing: 0.4rem; /* Aumenta el espaciado entre letras al pasar el ratón por encima */
+}
+
+.disabled{
+   opacity: .5;
+   user-select: none;
+   pointer-events: none;
+}
+
+.message{
+   position: sticky;
+   top:0;
+   max-width: 1200px;
+   margin:0 auto;
+   padding:2rem;
+   display: flex;
+   align-items: center;
+   gap:1rem;
+   justify-content: space-between;
+   background-color: #222;
+    
+}
+
+.message span{
+   font-size: 2rem;
+   color:#ffffff;
+}
+
+.message i{
+   font-size: 2.5rem;
+   color:var(--red);
+   cursor: pointer;
+}
+
+.message i:hover{
+   color:var(--black);
+}
+
+.empty{
+   border:var(--border);
+   padding:1.5rem;
+   text-align: center;
+   width: 100%;
+   font-size: 2rem;
+   text-transform: capitalize;
+   color:var(--red);
+}
+
+.flex-btn{
+   display: flex;
+   gap:1rem;
+}
+
+.header{
+   background: linear-gradient(to right, rgba(0, 0, 0, 0.3), #007BFF);
+position: sticky;
+top: 0;
+left: 0;
+right: 0;
+z-index: 1000;
+background-color: var(--white);
+border-bottom: var(--border);
+transition: background 0.3s, border-bottom 0.3s, transform 0.3s, box-shadow 0.3s;
+
+}
+
+.header .flex{
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   position: relative;
+}
+
+.header .flex .logo{
+   font-size: 2.5rem;
+   color:var(--black);   
+}
+
+.header .flex .navbar a{
+   font-size: 2rem;
+   color:var(--black);
+   margin:0 1rem;
+}
+
+.header .flex .navbar a:hover{
+   color:var(--yellow);
+   text-decoration: underline;
+}
+
+.header .flex .icons > *{
+   margin-left: 1.5rem;
+   font-size: 2.5rem;
+   color:var(--black);
+   cursor: pointer;
+}
+
+.header .flex .icons > *:hover{
+   color: var(--yellow);
+}
+
+.header .flex .icons span{
+   font-size: 2rem;
+}
+
+#menu-btn{
+   display: none;
+}
+
+/* Estilos para la sección de perfil */
+.header .flex .profile {
+   background-color: var(--white);
+   border:  6px solid #00ffff;
+   border-radius: 15px;
+   padding: 1.5rem;
+   text-align: center;
+   position: absolute;
+   top: 120%;
+   right: 2rem;
+   width: 30rem;
+   opacity: 0;
+   transform: translateY(1rem);
+   transition: opacity 0.3s, transform 0.3s, box-shadow 0.3s;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+   z-index: 10;
+   pointer-events: none;
+}
+
+/* Estilos para la sección de perfil cuando está activa */
+.header .flex .profile.active {
+   opacity: 1;
+   transform: translateY(0);
+   pointer-events: auto;
+}
+
+/* Animación de entrada para la sección de perfil */
+@keyframes fadeIn {
+   0% {
+      opacity: 0;
+      transform: translateY(1rem);
+   }
+   100% {
+      opacity: 1;
+      transform: translateY(0);
+   }
+}
+
+/* Estilo de sombra al hacer hover en la sección de perfil */
+.header .flex .profile:hover {
+   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Cabecera */
+.header .flex .profile .name {
+   font-size: 2.2rem; /* Aumento en el tamaño de fuente */
+   color: var(--black);
+   margin-bottom: 0.3rem; /* Menor espacio entre los elementos */
+   font-weight: bold; /* Texto en negrita */
+ }
+ 
+ .header .flex .profile .account {
+   margin-top: 1rem; /* Espaciado superior aumentado */
+   font-size: 1.8rem; /* Tamaño de fuente ligeramente más pequeño */
+   color: var(--light-color);
+   font-style: italic; /* Texto en cursiva */
+ }
+ 
+ .header .flex .profile .account a {
+   color: var(--black);
+   text-decoration: none; /* Quita el subrayado predeterminado */
+   transition: color 0.3s; /* Transición suave para el color al pasar el mouse */
+ }
+ 
+ .header .flex .profile .account a:hover {
+   color: var(--yellow);
+   text-decoration: underline;
+ }
+ 
+ /* Sección Hero */
+ .hero .slide {
+   display: flex;
+   align-items: center;
+   flex-wrap: wrap-reverse;
+   gap: 2rem;
+   margin-bottom: 4rem;
+   background: linear-gradient(to right, rgba(0, 0, 0, 0.3), #007BFF);
+   border: 1px solid #e0e0e0;
+   border-radius: 8px;
+   transition: transform 0.4s, box-shadow 0.4s, background-color 0.4s;
+   transform: scale(1);
+   overflow: hidden; /* Añadido un recorte para contenido que desborde */
+   position: relative;
+ }
+ 
+ /* Imagen en la diapositiva */
+ .hero .slide .image {
+   flex: 1 1 40rem;
+   position: relative;
+   overflow: hidden;
+   border-radius: 8px 0 0 8px;
+ }
+ 
+ .hero .slide .image img {
+   width: 100%;
+   height: auto;
+   transition: transform 0.4s;
+   object-fit: cover;
+   border-radius: 8px 0 0 8px;
+ }
+ 
+ /* Contenido en la diapositiva */
+ .hero .slide .content {
+   flex: 1 1 50rem;
+   text-align: center;
+   padding: 2rem;
+
+   border-radius: 0 8px 8px 0;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+ }
+ 
+ /* Efectos al pasar el mouse sobre la diapositiva */
+ .hero .slide:hover {
+   transform: scale(1.05);
+   box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+   background-color: #f8f8f8;
+   cursor: pointer;
+ }
+ .hero .slide .content h3{
+   margin:1rem 0;
+   font-size: 6rem;
+   color:var(--black);
+   text-transform: capitalize;
+}
+ .hero .slide .content span{
+   font-size: 4.5rem;
+   color:var(--light-color);
+}
+
+ 
+ .hero .slide:hover .image img {
+   transform: scale(1.1);
+   transition: transform 0.4s ease-in-out;
+ }
+ 
+.swiper-pagination-bullet-active{
+   background-color: var(--yellow);
+}
+.category .box-container {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+   gap: 20px;
+   justify-items: center;
+   text-align: center;
+ }
+ 
+ .category .box-container .box {
+   background: linear-gradient(135deg, #3498db, #9b59b6);
+   border-radius: 20px;
+   padding: 25px;
+   transition: transform 0.3s, box-shadow 0.3s, background 0.3s, color 0.3s;
+   transform: scale(1);
+   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+   color: #fff;
+   font-weight: bold;
+   position: relative;
+   overflow: hidden;
+   border: 6px solid #00ffff;
+ }
+ .category .box-container .box:before {
+   content: '';
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+   pointer-events: none;
+   z-index: 1;
+ }
+ .category .box-container .box img {
+   width: 100%;
+   max-height: 200px;
+   object-fit: cover;
+   border-radius: 15px 15px 0 0;
+ }
+ 
+ .category .box-container .box h3 {
+   font-size: 1.8rem;
+   margin-top: 1rem;
+   text-transform: capitalize;
+   border-radius: 20px;
+   border: 6px solid #00ffff;
+ }
+ 
+ .category .box-container .box:hover {
+   background: linear-gradient(to bottom, hsl(88, 100%, 60%), rgb(0, 173, 204));
+   transform: scale(1.1);
+   transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
+   cursor: pointer;
+ }
+ 
+ .category .box-container .box:hover h3 {
+   text-decoration: underline;
+ }
+ 
+   
+/* Estilo de la lista de productos innovador */
+
+.products .box-container {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, 33rem);
+   justify-content: center;
+   align-items: flex-start;
+   gap: 1.5rem;
+   border-radius: 16px;
+}
+
+.products .box-container .box {
+   border: none;
+   padding: 1.5rem;
+   position: relative;
+   overflow: hidden;
+   background: linear-gradient(45deg, #586776, #9c9fa4); /* Combinación de colores bonita y seria */
+   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.1);
+   border: 5px solid;
+ border-image: linear-gradient(45deg, #3498db, #2ecc71) 1;
+ border-image-slice: 1;
+    border-radius: 16px;
+   transition: transform 0.3s, box-shadow 0.3s, background 0.3s; /* Efecto de transición suave */
+}
+.products .box-container .box:hover {
+   transform: translateY(-20px); /* Eleva la tarjeta */
+   box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2), 0 6px 12px rgba(0, 0, 0, 0.1);
+   transition: transform 0.3s, box-shadow 0.3s;
+   background: linear-gradient(45deg, #9c9fa4, #586776);
+}
+
+.products .box-container .box img {
+   height: 25rem;
+   width: 100%;
+   object-fit: contain;
+   margin-bottom: 1rem;
+}
+
+.products .box-container .box .fa-eye,
+.products .box-container .box .fa-shopping-cart {
+   position: absolute;
+   top: 1rem;
+   right: 10rem; /* Posición en la esquina superior derecha */
+   height: 4.5rem;
+   width: 4.5rem;
+   line-height: 4.3rem;
+   border: none;
+   background-color: rgb(180, 173, 173);
+   cursor: pointer;
+   font-size: 2rem;
+   color: #ffcc00; /* Color inicial - Cambia a tu preferencia */
+   transition: transform 0.3s, color 0.3s;
+   text-align: center;
+   z-index: 1000;
+}
+
+.products .box-container .box:hover .fa-eye {
+   color: #7066ff; /* Color al pasar el ratón - Cambia a tu preferencia */
+   transform: scale(1.2);
+}
+
+.products .box-container .box:hover .fa-shopping-cart {
+   color: #7066ff; /* Color al pasar el ratón - Cambia a tu preferencia */
+   transform: scale(1.2);
+}
+
+
+
+.products .box-container .box .fa-eye {
+   left: -10rem;
+}
+
+.products .box-container .box .fa-shopping-cart {
+   right: -10rem;
+}
+
+.products .box-container .box:hover .fa-eye {
+   left: 1rem;
+}
+
+.products .box-container .box:hover .fa-shopping-cart {
+   right: 1rem;
+}
+
+.products .box-container .box .cat {
+  font-size: 1.8rem;
+  color: #becbe9;
+  transition: color 0.3s, text-decoration 0.3s, border-color 0.3s; /* Añadida transición para el color, subrayado y color del borde */
+  margin-top: 0.5rem;
+  opacity: 0.8;
+  border: 2px solid transparent; /* Borde transparente para inicializar */
+  border-radius: 5px; /* Borde redondeado */
+  padding: 1rem; /* Añadido relleno para el contenido dentro del borde */
+}
+
+.products .box-container .box:hover .cat {
+  color: #2c3a4a;
+  opacity: 1;
+  transform: translateY(-3px);
+  border-color: #3498db; /* Cambio de color del borde al pasar el ratón */
+  background-color: #26839b; /* Color de fondo dentro del borde al pasar el ratón */
+}
+
+.products .box-container .box .name {
+   font-size: 2rem;
+   color: var(--black);
+   margin: 1rem 0;
+}
+
+.products .box-container .box .flex {
+   display: flex;
+   align-items: center;
+   gap: 1rem;
+   margin-top: 1.5rem;
+}
+
+.products .box-container .box .flex .price {
+   margin-right: auto;
+   font-size: 2.5rem;
+   color: var(--black);
+}
+
+.products .box-container .box .flex .price span {
+   color: #832b2b; /* Cambia el color de texto a tu elección */
+   font-size: 1.8rem;
+}
+
+.products .box-container .box .flex .qty {
+   padding: 1rem;
+   border: 5px solid #00ffff;; /* Añade un borde sólido con un color más oscuro */
+   border-radius: 8px; /* Agrega bordes redondeados */
+   font-size: 1.8rem;
+   color: #4a4a4a; /* Cambia el color del texto a uno más oscuro */
+   transition: border-color 0.3s, color 0.3s, transform 0.3s; /* Agrega transiciones suaves */
+   cursor: pointer; /* Cambia el cursor al pasar el ratón */
+}
+
+.products .box-container .box .flex .qty:hover {
+   border-color: rgb(31, 250, 45); /* Cambia el color del borde al pasar el ratón a uno más oscuro */
+   color: #2c3a4a; /* Cambia el color del texto al pasar el ratón a uno más oscuro */
+   transform: scale(1.05); /* Aumenta ligeramente al pasar el ratón */
+}
+
+.products .box-container .box .flex .fa-edit {
+   width: 5rem;
+   height: 4.5rem;
+   background-color: #2ecc71; /* Cambia el color de fondo a tu elección */
+   color: #fff; /* Cambia el color de texto a tu elección */
+   border: 2px solid #27ae60; /* Ajusta el grosor y color del borde */
+   border-radius: 8px; /* Borde redondeado */
+   cursor: pointer;
+   font-size: 1.8rem;
+   transition: background-color 0.3s, color 0.3s, transform 0.3s ease-in-out, border-color 0.3s; /* Transiciones suaves */
+   text-align: center;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+ }
+ 
+ .products .box-container .box .flex .fa-edit:hover {
+   background-color: #27ae60; /* Cambia el color de fondo al pasar el ratón */
+   color: #fff; /* Cambia el color de texto al pasar el ratón */
+   border-color: #218c53; /* Cambia el color del borde al pasar el ratón */
+   transform: scale(1.1); /* Aumento de escala al pasar el ratón */
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra al pasar el ratón */
+ }
+ 
+
+.products .box-container .box .fa-times {
+   position: absolute;
+   top: 1rem;
+   right: 1rem;
+   background-color: #3498db;
+   color: #fff;
+   border: 2px solid #2980b9;
+   border-radius: 50%; /* Borde redondo */
+   line-height: 4.5rem; /* Ajuste para centrar el ícono verticalmente */
+   height: 4.5rem;
+   width: 4.5rem;
+   cursor: pointer;
+   font-size: 2rem;
+   transition: background-color 0.3s, color 0.3s, transform 0.3s ease-in-out, border-radius 0.3s; /* Ajustado para incluir transición de borde redondo */
+   transform: scale(1);
+   z-index: 1000;
+ }
+ 
+ .products .box-container .box .fa-times:hover {
+   background-color: #2980b9;
+   color: #fff;
+   transform: scale(1.1);
+   border-radius: 20%; /* Ajusta según tu preferencia para un cambio más suave en el borde redondo */
+ }
+ 
+
+.products .box-container .box .sub-total {
+   margin-top: 1rem;
+   font-size: 1.8rem;
+   color: rgb(214, 166, 166)f7f; /* Cambia el color de texto a tu elección */
+}
+
+.products .box-container .box .sub-total span {
+   color: #ff0000; /* Cambia el color al pasar el ratón por encima */
+}
+
+.products .more-btn {
+   margin-top: 1rem;
+   text-align: center;
+   background-color: #474643; /* Cambia el color de fondo a tu elección */
+   padding: 1rem 2rem;
+   font-weight: bold;
+   color: #fff; /* Cambia el color de texto a tu elección */
+   border-radius: 5px;
+   text-decoration: none;
+   transition: background-color 0.3s;
+}
+
+.products .more-btn:hover {
+   background-color: #a3bebebb; /* Cambia el color al pasar el ratón por encima */
+}
+
+
+
+.products .cart-total {
+   display: flex;
+   align-items: center;
+   gap: 1.5rem;
+   flex-wrap: wrap;
+   justify-content: space-between;
+   margin-top: 3rem;
+   border: 8px solid #3498db; /* Borde sólido con color de resaltado */
+   border-radius: 12px; /* Bordes redondeados */
+   padding: 1.5rem; /* Ajuste de relleno */
+   transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+   cursor: pointer; /* Cambia el cursor al pasar el ratón */
+}
+
+.products .cart-total:hover {
+   border-color: #ff9900; /* Cambio de color del borde al pasar el ratón */
+   transform: scale(1.02); /* Aumento de escala al pasar el ratón */
+   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+
+}
+
+.products .cart-total p{
+   font-size: 2.5rem;
+   color:#f06;
+}
+
+.products .cart-total p span{
+   color:#e0e0e0;
+}
+
+.products .cart-total .btn{
+   margin-top: 0;
+}
+
+.about .row{
+   display: flex;
+   align-items: center;
+   flex-wrap: wrap;
+   gap:1.5rem;
+}
+
+.about .row .image{
+   flex:1 1 40rem;
+}
+
+.about .row .image img{
+   width: 100%;
+}
+
+.about .row .content{
+   flex:1 1 40rem;
+   text-align: center;
+}
+
+.about .row .content h3{
+   font-size: 3rem;
+   color:var(--black);
+   text-transform: capitalize;
+   margin-bottom: 1rem;
+   
+
+}
+
+.about .row .content p {
+   border: 6px solid #00ffff;
+   border-radius: 20px;
+   padding: 1rem 0;
+   line-height: 2;
+   font-size: 1.8rem;
+   color: #e0e0e0;
+   transition: color 0.4s, transform 0.3s;
+}
+
+.about .row .content p:hover {
+   color: #ff9900;
+   transform: scale(1.02);
+}
+
+
+.steps .box-container {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+   gap: 1.5rem;
+   align-items: flex-start;
+   justify-content: center;
+   padding: 1rem;
+}
+
+.steps .box-container .box {
+   border-radius: 20px;
+   text-align: center;
+  border: 6px solid #00ffff;
+   padding: 2rem;
+   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+   transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+   background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #ffffff 100%);
+   border-radius: 20px;
+   overflow: hidden;
+   position: relative;
+}
+
+.steps .box-container .box:hover {
+   transform: translateY(-10px);
+   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+   background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #ff9900 100%);
+}
+
+.steps .box-container .box img {
+   height: 35rem;
+   width: 100%;
+   object-fit: cover;
+   margin-bottom: 1rem;
+   border-radius: 20px;
+   transition: transform 0.3s;
+}
+
+.steps .box-container .box:hover img {
+   transform: scale(1.1);
+}
+
+.steps .box-container .box h3 {
+   font-size: 2.3rem;
+   margin: 1rem 0;
+   color: #333;
+   text-transform: uppercase;
+   transition: color 0.3s;
+}
+
+.steps .box-container .box:hover h3 {
+   color: #ff00ff;
+}
+
+.steps .box-container .box p {
+   line-height: 1.8;
+   font-size: 1.6rem;
+   color: #777;
+   transition: color 0.3s;
+}
+
+.steps .box-container .box:hover p {
+   color: #555;
+}
+
+.steps .box-container .box::before {
+   content: '';
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background: rgba(0, 0, 0, 0.2);
+   opacity: 0;
+   transition: opacity 0.3s;
+}
+
+.steps .box-container .box:hover::before {
+   opacity: 1;
+}
+
+.reviews .slide {
+   margin-bottom: 4rem;
+   border: none;
+   padding: 2rem;
+   text-align: center;
+   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+   background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #ffffff 100%);
+   border-radius: 20px;
+   overflow: hidden;
+   transition: transform 0.4s, box-shadow 0.4s, background 0.4s, color 0.4s, filter 0.4s;
+   position: relative;
+   cursor: pointer;
+   transform-origin: center bottom;
+}
+
+.reviews .slide::before {
+   content: "";
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background: rgba(0, 0, 0, 0);
+   transition: background 0.4s;
+}
+
+.reviews .slide:hover {
+   transform: translateY(-10px) scale(1.05);
+   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+   background: #ff9900;
+   color: #fff;
+   filter: brightness(1.2);
+}
+
+.reviews .slide:hover::before {
+   background: rgba(0, 0, 0, 0.1);
+}
+
+.reviews .slide img {
+   height: 10rem;
+   width: 10rem;
+   border-radius: 50%;
+   object-fit: cover;
+   margin-bottom: 1rem;
+   transition: transform 0.4s;
+}
+
+.reviews .slide:hover img {
+   transform: scale(1.1);
+   filter: grayscale(0);
+}
+
+.reviews .slide p {
+   padding: 1.5rem 0;
+   line-height: 1.8;
+   font-size: 1.6rem;
+   color: #777;
+   transition: color 0.4s;
+}
+
+.reviews .slide:hover p {
+   color: #fff;
+   text-transform: capitalize;
+}
+
+.reviews .slide .stars {
+   display: inline-block;
+   padding: 0.5rem 1.5rem;
+   background: #ffcc00;
+   border-radius: 10px;
+   transition: background 0.4s;
+}
+
+.reviews .slide .stars i {
+   font-size: 1.8rem;
+   color: #fff;
+}
+
+.reviews .slide:hover .stars {
+   background: #ffaa00;
+}
+
+.reviews .slide h3 {
+   font-size: 2rem;
+   margin-top: 1.5rem;
+   text-transform: uppercase;
+   color: #333;
+   font-weight: bold;
+   transition: color 0.4s;
+}
+
+.reviews .slide:hover h3 {
+   color: #fff;
+}
+
+
+
+.contact .row {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+   gap: 1.5rem;
+   align-items: center;
+   justify-content: center;
+}
+
+.contact .row .image {
+   flex: 1 1 40rem;
+   border-radius: 20px;
+   overflow: hidden;
+   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+   transition: transform 0.3s, box-shadow 0.3s;
+   background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #ffffff 100%);
+}
+
+.contact .row .image img {
+   width: 100%;
+   object-fit: cover;
+   border-radius: 20px;
+   transition: transform 0.3s;
+}
+
+.contact .row .image:hover {
+   transform: translateY(-10px);
+   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+   background: #967544;
+}
+
+.contact .row form {
+   flex: 1 1 40rem;
+   padding: 2rem;
+   text-align: center;
+   background: #ffffff;
+   border-radius: 20px;
+   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+   transition: transform 0.3s, box-shadow 0.3s;
+   border: 5px solid #1f1a1a;
+   position: relative;
+   overflow: hidden;
+}
+
+.contact .row form:hover {
+   transform: translateY(-10px);
+   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+   background: #748331be;
+}
+
+.contact .row form h3 {
+   font-size: 2.5rem;
+   color: #333;
+   margin-bottom: 1rem;
+   text-transform: uppercase;
+   font-weight: 600;
+   transition: color 0.3s;
+}
+
+.contact .row form:hover h3 {
+   color: #ff9900;
+}
+
+.contact .row form .box {
+   margin: 0.7rem 0;
+   font-size: 1.8rem;
+   color: #555;
+   border: 5px solid #ccc;
+   border-radius: 10px;
+   padding: 1.4rem;
+   width: 100%;
+   transition: border-color 0.3s;
+   background: #f7f7f7;
+}
+
+.contact .row form .box:focus {
+   border-color: #079280;
+}
+
+.contact .row form textarea {
+   height: 15rem;
+   resize: none;
+   border: 2px solid #ccc;
+   border-radius: 10px;
+   padding: 1.4rem;
+   width: 100%;
+   transition: border-color 0.3s;
+   background: #f7f7f7;
+}
+
+.contact .row form textarea:focus {
+   border-color: #ff9900;
+}
+
+
+.search-form form{
+   display: flex;
+   gap:1.3rem;
+}
+
+.search-form form .box {
+   width: 100%;
+   padding: 1.4rem;
+   font-size: 1.8rem;
+   color: #2c3e50;
+   border: 6px solid #00ffff;
+   border-radius: 10px;
+   background-color: #ecf0f1;
+   transition: border-color 0.3s, transform 0.3s ease-in-out, box-shadow 0.3s, background-color 0.3s;
+ 
+   /* Efectos de sombra y escala al pasar el ratón */
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+ }
+ 
+ .search-form form .box:hover {
+   border-color: #3498db;
+   transform: scale(1.05);
+   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+ }
+ 
+ .search-form form .box:focus {
+   outline: none;
+   border-color: #3498db;
+   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+   background-color: #fff; /* Cambio de color de fondo al enfocar */
+ }
+    
+
+ .search-form form .fa-search {
+   width: 6rem;
+   background-color: var(--black);
+   color: var(--white);
+   cursor: pointer;
+   font-size: 2.5rem;
+   border: 6px solid #00ffff;
+   border-radius: 10px;
+   transition: background-color 0.3s, color 0.3s, transform 0.3s ease-in-out, border-color 0.3s; /* Añadida transición suave */
+ 
+   /* Estilo al pasar el ratón */
+ }
+ 
+ .search-form form .fa-search:hover {
+   background-color: var(--yellow);
+   color: var(--black);
+   transform: scale(1.1); /* Aumento de escala al pasar el ratón */
+   border-color: var(--yellow); /* Cambio de color del borde al pasar el ratón */
+ }
+ 
+.checkout form {
+   max-width: 50rem;
+   margin: 0 auto;
+   border: 2px solid var(--border);
+   padding: 2rem;
+   background-color: #f7f7f7;
+   border-radius: 10px;
+   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+   transform: translateX(0);
+   transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+   position: relative;
+   overflow: hidden;
+}
+
+.checkout form:hover {
+   transform: translateY(-10px);
+   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+   background-color: #fff;
+   
+}
+
+.checkout form h3 {
+   font-size: 2.5rem;
+   text-transform: capitalize;
+   padding: 2rem 0;
+   color: var(--black);
+   transform: scale(1);
+   transition: color 0.3s, transform 0.3s;
+}
+
+.checkout form:hover h3 {
+   color: #ff9900;
+   transform: scale(1.05);
+}
+
+.checkout form .cart-items {
+   background: linear-gradient(45deg, #D98880, #8B4513);
+   padding: 2rem;
+   padding-top: 0;
+   border-radius: 10px;
+   transform: translateY(0);
+   transition: background-color 0.3s, transform 0.3s;
+   overflow: hidden;
+   position: relative;
+   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.checkout form:hover .cart-items {
+   background-color: #f8f8f8;
+   transform: translateY(-10px);
+}
+
+.checkout form .cart-items h3 {
+   color: var(--black);
+   transition: color 0.3s;
+}
+
+.checkout form .cart-items p {
+   display: flex;
+   align-items: center;
+   gap: 1.5rem;
+   justify-content: space-between;
+   margin: 1rem 0;
+   padding: 1rem;
+   border: 5px solid #ddd; /* Borde sólido */
+   border-radius: 8px; /* Bordes redondeados */
+   background-color: #b9b7b7; /* Fondo blanco */
+   line-height: 1.5;
+   font-size: 2rem;
+   transition: color 0.3s, border-color 0.3s, background-color 0.3s;
+}
+
+.checkout form .cart-items p:hover {
+   background-color: #f8f8f8; /* Cambio de color de fondo al pasar el ratón por encima */
+}
+
+.checkout form .cart-items p .name {
+   color: var(--light-color);
+}
+
+.checkout form .cart-items p .price {
+   color: var(--yellow);
+}
+
+.checkout form .cart-items .grand-total {
+   background-color: #fff;
+   padding: 0.5rem 1.5rem;
+   border-radius: 10px;
+   margin-top: 2rem;
+   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+   transform: translateY(0);
+   transition: background-color 0.3s, transform 0.3s;
+   overflow: hidden;
+   position: relative;
+}
+
+.checkout form:hover .cart-items .grand-total {
+   background-color: #f8f8f8;
+   transform: translateY(-10px);
+}
+
+.checkout form .cart-items .grand-total .price {
+   color: var(--red);
+   transform: scale(1);
+   transition: color 0.3s, transform 0.3s;
+}
+
+.checkout form:hover .cart-items .grand-total .price {
+   color: #ff0000;
+   transform: scale(1.05);
+}
+
+.checkout form .user-info p {
+   font-size: 2rem;
+   line-height: 1.5;
+   padding: 1rem 0;
+   color: var(--black);
+   transition: color 0.3s;
+   display: flex;
+   align-items: center;
+}
+
+.checkout form .user-info p i {
+   color: var(--light-color);
+   margin-right: 1rem;
+   transition: color 0.3s;
+}
+
+.checkout form .user-info p span {
+   color: var(--black);
+   transition: color 0.3s;
+}
+
+.checkout form .user-info p:hover {
+   color: #3498db; /* Cambio de color al pasar el ratón por encima */
+}
+
+
+.checkout form .user-info .box {
+   width: 100%;
+   border: 2px solid var(--border);
+   border-radius: 10px;
+   padding: 1.4rem;
+   margin-top: 2rem;
+   margin-bottom: 1rem;
+   font-size: 1.8rem;
+   background: linear-gradient(45deg, #D98880, #8B4513);
+   transform: translateY(0);
+   transition: border-color 0.3s, transform 0.3s;
+   position: relative;
+   overflow: hidden;
+}
+
+.checkout form .user-info .box:focus {
+   border-color: var(--yellow);
+   transform: translateY(-5px);
+   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.orders .box-container {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+   gap: 1.5rem;
+   align-items: flex-start;
+   justify-content: center;
+ }
+ 
+ .orders .box-container .box {
+   padding: 2rem;
+   border: 6px solid #3498db; /* Borde sólido añadido */
+   border-radius: 10px;
+   overflow: hidden;
+   transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; /* Añadida transición al borde */
+   text-align: left;
+ }
+ 
+ 
+ .orders .box-container .box:hover {
+   transform: scale(1.02); /* Aumento de escala al pasar el ratón */
+   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada al pasar el ratón */
+   border-color: #2c3a4a; /* Cambio de color del borde al pasar el ratón */
+ }
+ 
+
+.orders .box-container .box p {
+   line-height: 1.5;
+   margin: 1rem 0;
+   font-size: 2rem;
+   color: #eee7e7; /* Cambia el color de texto a un tono más suave */
+}
+
+.orders .box-container .box p span {
+   color: rgb(131, 186, 223);
+   font-weight: bold;
+   transition: color 0.3s, transform 0.3s; /* Añadida transición al color del texto y a la transformación */
+   display: inline-block; /* Alinea el elemento como bloque en línea para permitir transformaciones */
+ }
+ 
+ .orders .box-container .box:hover p span {
+   color: #2c3a4a;
+   transform: translateY(-2px); /* Eleva ligeramente al pasar el ratón para un efecto sutil */
+ }
+ 
+ .form-container form {
+   background: linear-gradient(to right, rgba(0, 0, 0, 0.7), #3498db);
+   border: 1px solid transparent;
+   border-radius: 12px;
+   margin: 0 auto;
+   max-width: 500px;
+   padding: 30px;
+   text-align: center;
+   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+   animation: fadeIn 1s ease;
+   transition: transform 0.3s, box-shadow 0.3s;
+}
+
+@keyframes fadeIn {
+   from {
+       opacity: 0;
+       transform: translateY(-20px);
+   }
+   to {
+       opacity: 1;
+       transform: translateY(0);
+   }
+}
+
+.form-container form h3 {
+   font-size: 2.8rem;
+   color: #fff;
+   text-transform: uppercase;
+   margin-bottom: 20px;
+   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.form-container form .box {
+   margin: 10px 0;
+   padding: 15px;
+   width: 100%;
+   border: 6px solid transparent;
+   border-radius: 8px;
+   font-size: 1.8rem;
+   color: #fff;
+   background: rgba(255, 255, 255, 0.2);
+   transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+
+.form-container form .box:focus {
+   border-color: #00bfff;
+   box-shadow: 0 0 15px rgba(0, 191, 255, 0.5);
+   transform: scale(1.05);
+}
+
+.form-container form p {
+   margin-top: 20px;
+   font-size: 2.2rem;
+   color: #fff;
+   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.form-container form p a {
+   color: #00bfff;
+   text-decoration: none;
+   transition: text-decoration 0.3s;
+}
+
+.form-container form p a:hover {
+   text-decoration: underline;
+}
+
+.form-container form:hover {
+   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+
+.user-details .user {
+   max-width: 50rem;
+   margin: 0 auto;
+   border: 2px solid #3498db; /* Borde sólido con color de resaltado */
+   padding: 2rem;
+   background: linear-gradient(to right, rgba(0, 0, 0, 0.7), #3498db); /* Gradiente más oscuro */
+   border-radius: 15px;
+   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+   text-align: center;
+   transform: scale(1);
+   transition: transform 0.5s, box-shadow 0.5s, background 0.5s, color 0.5s, border-color 0.5s;
+}
+
+.user-details .user:hover {
+   transform: translateY(-10px);
+   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+   background: linear-gradient(45deg, #606669, #28149b);
+   color: #fff;
+   border-color: #2c3a4a; /* Cambio de color del borde al pasar el ratón */
+}
+
+
+.user-details .user img {
+   max-width: 100%;
+   height: 100%;
+   border-radius: 10px 10px 0 0;
+   transform: scale(1);
+   transition: transform 0.5s;
+}
+
+.user-details .user:hover img {
+   transform: scale(1.1);
+}
+
+.user-details .user p {
+   padding: 1rem 0;
+   line-height: 1.6;
+   font-size: 2.2rem;
+   color: #fff;
+   font-weight: 500;
+   transition: color 0.5s;
+}
+
+.user-details .user:hover p {
+   color: #333;
+}
+
+.user-details .user p span {
+   color: #ccc;
+   font-weight: 600;
+   transition: color 0.5s;
+}
+
+.user-details .user p:hover span {
+   color: #ff9900;
+}
+
+.user-details .user p i {
+   margin-right: 1rem;
+   color: #777;
+   font-size: 1.6rem;
+   transition: color 0.5s;
+}
+
+.user-details .user:hover p i {
+   color: #ff9900;
+}
+
+.user-details .user .address {
+   margin-top: 1rem;
+   font-size: 1.8rem;
+   color: #eee;
+   font-weight: 400;
+   transition: color 0.5s;
+}
+
+.user-details .user:hover .address {
+   color: #555;
+}
+
+
+.quick-view form {
+   max-width: 40rem;
+   margin: 0 auto;
+   padding: 2rem;
+   border: 6px solid #00ffff;; /* Color del borde */
+   border-radius: 8px;
+   position: relative;
+       background: linear-gradient(45deg, #586776, #9c9fa4);
+   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+   transition: box-shadow 0.3s, transform 0.3s; /* Agregado efecto de transición */
+ 
+   /* Añadido estilo para los campos del formulario */
+ }
+ 
+ .quick-view form:hover {
+   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Cambia la sombra al pasar el ratón */
+   transform: scale(1.02); /* Aumento sutil de escala al pasar el ratón */
+ }
+ 
+ .quick-view form img {
+   height: 25rem;
+   width: 100%;
+   object-fit: cover; /* Se cambió a 'cover' para llenar el contenedor manteniendo la proporción */
+   border-radius: 8px; /* Se añadió un borde redondeado */
+   margin-bottom: 1rem;
+   transition: transform 0.3s ease-in-out; /* Agregada una transición para una animación suave */
+ }
+ 
+ .quick-view form img:hover {
+   transform: scale(1.1); 
+ }
+ 
+ .quick-view form .cat {
+   font-size: 1.8rem;
+   color: #3498db;
+   margin-bottom: 1rem;
+   border-radius: 4px; /* Borde redondeado */
+   padding: 0.5rem 1rem; /* Añadido espacio interno */
+   transition: background-color 0.3s, color 0.3s, transform 0.3s ease-in-out; /* Agregada transición suave */
+ 
+   /* Añadido estilo al pasar el ratón */
+ }
+ 
+ .quick-view form .cat:hover {
+   background-color: #3498db; /* Cambia el color de fondo al pasar el ratón */
+   color: #fff; /* Cambia el color de texto al pasar el ratón */
+   transform: scale(1.05); /* Aumento de escala al pasar el ratón */
+ }
+ 
+
+.quick-view form .name{
+   font-size: 2rem;
+   margin:.5rem 0;
+}
+
+.quick-view form .flex{
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   gap:1.5rem;
+   margin:1rem 0;
+}
+
+.quick-view form .flex .price {
+   font-size: 2.5rem;
+   color: #000;
+   margin-bottom: 1rem;
+   border: 5px solid #00ffff;; /* Añadido borde con color azul (puedes personalizar según tus preferencias) */
+   border-radius: 4px; /* Borde redondeado */
+   padding: 0.5rem; /* Añadido espacio interno */
+   transition: color 0.3s, border-color 0.3s, transform 0.3s ease-in-out; /* Transición suave */
+   display: inline-block; /* Añadido para que la transición funcione correctamente */
+ 
+   /* Estilo al pasar el ratón */
+ }
+ 
+ .quick-view form .flex .price:hover {
+   color: #3498db; /* Cambia el color al pasar el ratón */
+   border-color: #2980b9; /* Cambia el color del borde al pasar el ratón */
+   transform: scale(1.05); /* Aumento de escala al pasar el ratón */
+ }
+ 
+ .quick-view form .flex .price span {
+   font-size: 2rem;
+   color: rgb(4, 3, 12);
+ }
+ 
+.quick-view form .flex .qty {
+   border: 2px solid #ccc; /* Cambia el color del borde a tu elección */
+   border-radius: 4px;
+   padding: 1rem;
+   font-size: 1.8rem;
+   color: #000;
+   margin-bottom: 1rem;
+   transition: border-color 0.3s, transform 0.3s ease-in-out;
+ 
+   /* Estilo al pasar el ratón */
+ }
+ 
+ .quick-view form .flex .qty:hover {
+   border-color: #3498db;
+   transform: scale(1.05);
+ }
+ .quick-view form .cart-btn {
+   width: 100%;
+   padding: 1rem 3rem;
+   text-align: center;
+   border: 2px solid var(--border);
+   border-radius: 8px; /* Borde redondeado */
+   font-size: 2rem;
+   color: #000;
+   cursor: pointer;
+   text-transform: capitalize;
+   background: linear-gradient(45deg, #3498db, #1f618d); /* Mix de colores en un degradado */
+   margin-top: 1rem;
+   transition: background 0.3s, color 0.3s, transform 0.3s ease-in-out; /* Agregada transición suave */
+ 
+   /* Estilo al pasar el ratón */
+ }
+ 
+ .quick-view form .cart-btn:hover {
+   background: linear-gradient(45deg, #1f618d, #3498db); /* Cambia el mix de colores al pasar el ratón */
+   color: #fff;
+   transform: scale(1.05);
+ }
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+.footer {
+   background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('images/footer-background.jpg');
+   background-size: cover;
+   background-position: center;
+   color: #fff;
+   padding: 4rem 0;
+   text-align: center;
+   transition: background 0.5s;
+}
+
+.footer:hover {
+   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/footer-background.jpg');
+}
+
+.footer .grid {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+   gap: 2rem;
+   justify-content: center;
+   align-items: flex-start;
+}
+
+.footer .box {
+   background: rgba(255, 255, 255, 0.1);
+   border-radius: 1rem;
+   padding: 2rem;
+   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+   transform: translateY(0);
+   transition: transform 0.5s, box-shadow 0.5s, background 0.5s;
+}
+
+.footer .box:hover {
+   transform: translateY(-20px);
+   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+   background: rgba(255, 255, 255, 0.2);
+}
+
+.footer .box img {
+   max-width: 100px;
+   height: auto;
+   transform: scale(1);
+   transition: transform 0.5s;
+}
+
+.footer .box:hover img {
+   transform: scale(1.2);
+}
+
+.footer .box h3 {
+   font-size: 2.2rem;
+   margin: 1rem 0;
+   text-transform: uppercase;
+   color: #ff9900;
+   transition: color 0.5s;
+}
+
+.footer .box a {
+   color: #fff;
+   text-decoration: none;
+   font-size: 1.6rem;
+   margin-top: 1rem;
+   display: inline-block;
+   transition: color 0.5s;
+}
+
+.footer .box a:hover {
+   color: #ff9900;
+}
+
+.footer .box a i {
+   margin-right: 0.5rem;
+   font-size: 2rem;
+   transform: scale(1);
+   transition: transform 0.5s;
+}
+
+.footer .box a:hover i {
+   transform: scale(1.2);
+}
+
+.footer .box p {
+   font-size: 1.6rem;
+   margin: 0.5rem 0;
+}
+
+.footer .box iframe {
+   border: none;
+   width: 100%;
+}
+
+.credit {
+   text-align: center;
+   background: rgba(0, 0, 0, 0.8);
+   color: #fff;
+   padding: 1rem 0;
+   font-size: 1.4rem;
+   transform: scale(1);
+   transition: background 0.5s, transform 0.5s;
+}
+
+.credit:hover {
+   background: rgba(0, 0, 0, 0.6);
+   transform: scale(1.1);
+}
+
+
+
+@keyframes spin {
+   0% { transform: rotate(0deg); }
+   100% { transform: rotate(360deg); }
+}
+
+
+.loader{
+   position: fixed;
+   top:0; left:0; right:0; bottom: 0;
+   z-index: 1000000;
+   background-color: var(--white);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.loader img{
+   height: 25rem;
+}
+
+
+
+/* media queries  */
+
+@media (max-width:991px) {
+   
+   html{
+      font-size: 55%;
+   }
+
+}
+
+@media (max-width:768px){
+
+   #menu-btn{
+      display: inline-block;
+   }
+
+   .header .flex .navbar{
+      position: absolute;
+      top:99%; left: 0; right: 0;
+      border-top: var(--border);
+      border-bottom: var(--border);
+      background-color: var(--white);
+      transition: .2s linear;
+      clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+   }
+
+   .header .flex .navbar a{
+      display: block;
+      margin:2rem;
+   }
+
+   .header .flex .navbar.active{
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+   }
+
+}
+
+@media (max-width:450px) {
+   
+   html{
+      font-size: 50%;
+   }
+
+   .title{
+      font-size: 3rem;
+   }
+
+   .header .flex .logo{
+      font-size: 2rem;      
+   }
+
+   .hero .slide .content h3{
+      font-size: 5rem;
+   }
+
+   .products .box-container{
+      grid-template-columns: 1fr;
+   }
+
+   .heading h3{
+      font-size: 3.5rem;
+   }
+
+   .products .cart-total{
+      padding:1.5rem;
+      justify-content: center;
+   }
+
+   .flex-btn{
+      flex-flow: column;
+      gap:0;
+   }   
+
+}
+/* Estilos CSS avanzados para el formulario de reserva */
+
+/* Estilos para el historial de reservas */
+.reservas-historial {
+   max-width: 1000px;
+   margin: 0 auto;
+   padding: 20px;
+   background-color: #2c2f33;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+   border-radius: 8px;
+   margin-top: 30px;
+   color: #fff;
+}
+
+.reservas-historial h1 {
+   color: #fff;
+   text-align: center;
+   margin-bottom: 20px;
+   font-size: 2.5rem;
+}
+
+.reservas-historial table {
+   width: 100%;
+   border-collapse: collapse;
+   margin-top: 20px;
+   background-color: #23272a;
+}
+
+.reservas-historial table th, .reservas-historial table td {
+   padding: 15px;
+   border: 1px solid #1f1f1f;
+   text-align: center;
+   font-size: 1.5rem;
+   color: #fff;
+}
+
+.reservas-historial table th {
+   background-color: #116530;
+   color: #fff;
+   font-weight: bold;
+   font-size: 1.8rem; /* Tamaño más grande para las cabeceras */
+}
+
+.reservas-historial table tr:nth-child(even) {
+   background-color: #2c2f33;
+}
+
+.reservas-historial table tr:nth-child(odd) {
+   background-color: #23272a;
+}
+
+.reservas-historial table tr:hover {
+   background-color: #40444b;
+}
+
+.reservas-historial .btn {
+   display: inline-block;
+   padding: 10px 20px;
+   margin-top: 20px;
+   background-color: #116530;
+   color: #fff;
+   text-align: center;
+   text-decoration: none;
+   border-radius: 5px;
+   transition: background-color 0.3s;
+}
+
+.reservas-historial .btn:hover {
+   background-color: #13a10e;
+}
+
+.alert-success {
+   color: green;
+   font-size: 1.2em;
+   text-align: center;
+   margin: 20px;
+}
+
+.info-message p {
+   font-size: 1.5em;
+   text-align: center;
+   margin: 20px 0;
+}
+
+.btn-pencil {
+   background-color: #4CAF50;
+   color: white;
+   border: none;
+   padding: 10px 20px;
+   text-align: center;
+   text-decoration: none;
+   display: inline-block;
+   font-size: 16px;
+   margin: 4px 2px;
+   cursor: pointer;
+   border-radius: 12px;
+}
+
+.btn-pencil:disabled {
+   background-color: #cccccc;
+   cursor: not-allowed;
+}
+

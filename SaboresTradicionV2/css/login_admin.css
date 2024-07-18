@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #FFB6C1;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.3), #007BFF);
+}
+
+.form-box {
+    position: relative;
+    width: 500px;
+    height: auto;
+    background: rgba(0, 0, 0, 0.3);
+    border: 2px solid transparent;
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+    transform-origin: center top;
+    transform: rotateX(0deg) scale(1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.form-box:hover {
+    transform: rotateX(5deg) scale(1.05);
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.5);
+}
+
+h2 {
+    font-size: 2em;
+    color: #fff;
+    text-align: center;
+    margin: 20px 0;
+    transform: translateY(0);
+    opacity: 1;
+    transition: transform 0.5s, opacity 0.5s;
+}
+
+.form-box:hover h2 {
+    transform: translateY(-20px);
+    opacity: 0.8;
+}
+
+.inputbox {
+    position: relative;
+    width: 100%;
+    margin: 15px 0;
+    transform: translateY(0);
+    opacity: 1;
+    transition: transform 0.5s, opacity 0.5s;
+}
+
+.form-box:hover .inputbox {
+    transform: translateY(-10px);
+    opacity: 0.8;
+}
+
+.inputbox label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    color: #fff;
+    font-size: 1em;
+    pointer-events: none;
+    transition: 0.5s;
+}
+
+.inputbox input:focus ~ label,
+.inputbox input:valid ~ label {
+    top: -5px;
+    font-size: 0.75em;
+    color: #ff6f61;
+}
+
+.inputbox input {
+   
+    width: 100%;
+    height: 40px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    padding: 0 35px 0 5px;
+    color: #00ff90;
+    transition: 0.3s;
+    border-radius: 25px;
+}
+
+.inputbox input::placeholder {
+    color: #fff;
+}
+
+.inputbox ion-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #fff;
+    font-size: 1.2em;
+}
+
+.forget {
+    margin: 10px 0;
+    font-size: 0.9em;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.forget label input {
+    margin-right: 3px;
+}
+
+.forget label a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.forget label a:hover {
+    text-decoration: underline;
+}
+
+button {
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    font-size: 1.2em;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    text-transform: uppercase;
+    
+}
+
+
+
+button:hover {
+    background-color: #00ff90;
+    transform: scale(1.05);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.register {
+    font-size: 0.9em;
+    color: #fff;
+    text-align: center;
+    margin: 25px 0 10px;
+    transform: translateY(0);
+    opacity: 1;
+    transition: transform 0.5s, opacity 0.5s;
+}
+
+.form-box:hover .register {
+    transform: translateY(-10px);
+    opacity: 0.8;
+}
+
+.register p a {
+    text-decoration: none;
+    color: #ff6f61;
+    font-weight: 600;
+}
+
+.register p a:hover {
+    text-decoration: underline;
+}

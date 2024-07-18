@@ -1,0 +1,1252 @@
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400&display=swap');
+
+
+  
+:root{
+   --main-color:var(--orange); 
+   --red:#e74c3c;
+   --orange:#0bb18d;
+   --black:#34495e;
+   --white:#fff;
+   --light-bg:#f5f5f5;
+   --light-color:#999;
+   --border:.2rem solid var(--black);
+   --box-shadow:0 .5rem 1rem rgba(0,0,0,.1);
+}
+
+*{
+   
+  
+   box-sizing: border-box;
+   text-decoration: none;
+   outline: none; border:none;
+}
+
+*::selection{
+   color:var(--white);
+   background-color: var(--main-color);
+}
+
+::-webkit-scrollbar{
+   width: 1rem;
+   height: .5rem;
+}
+
+::-webkit-scrollbar-track{
+  background-color: none;
+}
+
+::-webkit-scrollbar-thumb{
+   background-color: var(--main-color);
+}
+
+html{
+   font-size: 60.5%;
+   overflow-x: hidden;
+}
+
+body{
+  background: linear-gradient(45deg, #FF6347, #1E90FF);
+ 
+}
+
+section{
+   max-width: 1200px;
+   margin:0 auto;
+   padding:2rem;
+}
+
+.btn,
+.option-btn{
+   display: block;
+   margin-top: 1rem;
+   border: 6px solid #00ffff;
+   border-radius: 10px;
+   cursor: pointer;
+   width: 100%;
+   font-size: 1.8rem;
+   color:var(--white);
+   padding:1.2rem 3rem;
+   text-transform: capitalize;
+   text-align: center;
+}
+
+.btn{
+   background-color: #3498db;
+}
+.delete-btn {
+    display: block;
+    margin-top: 1rem;
+    color:white;
+    border: 6px solid #00ffff;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1.8rem;
+    background-color: #b13737;
+    padding: 1.2rem 3rem;
+    text-transform: capitalize;
+    text-align: center;
+  
+}
+
+.delete-btn:hover {
+  background: linear-gradient(45deg, #75381b, #2c81c7); /* Cambia el gradiente al pasar el ratón */
+  transform: scale(1.05); /* Aumenta ligeramente el tamaño al pasar el ratón */
+}
+ 
+
+.option-btn{
+   background-color: var(--orange);
+}
+
+.btn:hover,
+ 
+.option-btn:hover{
+   background-color: var(--black);
+}
+
+.flex-btn{
+   display: flex;
+   gap:1rem;
+}
+
+.message{
+   position: sticky;
+   top:0;
+   max-width: 1200px;
+   margin:0 auto;
+   background-color: var(--light-bg);
+   padding:2rem;
+   display: flex;
+   align-items: center;
+   gap:1rem;
+   justify-content: space-between;
+}
+
+.message span{
+   font-size: 2rem;
+   color:var(--black);
+}
+
+.message i{
+   font-size: 2.5rem;
+   color:var(--red);
+   cursor: pointer;
+}
+
+.message i:hover{
+   color:var(--black);
+}
+
+.heading{
+   text-align: center;
+   margin-bottom: 2rem;
+   text-transform: capitalize;
+   color:var(--black);
+   font-size: 3rem;
+}
+
+.empty{
+   border:var(--border);
+   border-radius: .5rem;
+   background-color: var(--white);
+   padding:1.5rem;
+   text-align: center;
+   width: 100%;
+   font-size: 2rem;
+   text-transform: capitalize;
+   color:var(--red);
+   box-shadow: var(--box-shadow);
+}
+
+/* Contenedor del formulario */
+.form-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/entrega.png');
+  background-size: cover;
+  
+}
+
+.form-container form {
+  border: 6px solid #00ffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 2rem;
+  text-align: center;
+  max-width: 50rem;
+  color: #333;
+  transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+  overflow: hidden;
+}
+
+.form-container form:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  background-color: #000000;
+}
+
+.form-container form h3 {
+  font-size: 2.5rem;
+  color: #fcfcfc;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  transition: color 0.3s;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Sombra de texto para resaltar */
+}
+
+.form-container form h3:hover {
+  color: #00ffff; /* Cambia el color al pasar el ratón */
+}
+
+
+.form-container form p {
+  margin: 1rem 0;
+  font-size: 1.8rem;
+  color: #555;
+  transition: color 0.3s;
+}
+
+.form-container form p span {
+  color: #007bff;
+  transition: color 0.3s;
+}
+
+.form-container form .box {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 1.5rem;
+  font-size: 20px;
+  color: #34a6db;
+  margin: 1rem 0;
+  border: 6px solid #11a3a3;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-container form .box::placeholder {
+  color: #777;
+}
+
+.form-container form .box:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-container form .box[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  padding: 1.5rem 3rem;
+  font-size: 1.8rem;
+  border: none;
+  border-radius: 8px;
+}
+
+.form-container form .box[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.header .flex{
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   position: relative;
+}
+
+.header .flex .logo{
+   font-size: 2.5rem;
+   color:#00ffff;
+}
+
+.header .flex .logo span{
+   color:var(--main-color);
+}
+
+.header .flex .navbar a{
+   margin:0 1rem;
+   font-size: 2rem;
+   color:#00ffff;
+}
+
+.header .flex .navbar a:hover{
+   color:var(--main-color);
+}
+
+.header .flex .icons > *{
+   font-size: 2.5rem;
+   cursor: pointer;
+   color:var(--light-color);
+   margin-left: 1.7rem;
+}
+
+.header .flex .icons > *:hover{
+   color:var(--main-color);
+}
+
+.header .flex .profile{
+  position: absolute;
+  top: 125%;
+  right: 2rem;
+  background-color: #ced1d4;
+  box-shadow: var(--box-shadow);
+  border: var(--border);
+  border-radius: 0.5rem;
+  padding: 2rem;
+  padding-top: 1rem;
+  width: 30rem;
+  height: 25rem;
+  display: none;
+  animation: fadeIn 0.2s linear;
+    z-index: 1000;
+}
+
+@keyframes fadeIn {
+   0%{
+      transform: translateY(1rem);
+   }
+}
+
+.header .flex .profile p{
+   margin-bottom: 1rem;
+   font-size: 2rem;
+   text-align: center;
+   color:var(--black);
+}
+
+.header .flex .profile.active{
+   display: inline-block;
+}
+
+#menu-btn{
+   display: none;
+}
+
+/* Contenedor de cajas en el panel de control */
+.dashboard .box-container {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+   gap: 2rem;
+   align-items: center;
+   justify-content: space-between;
+ }
+ 
+ /* Estilos generales de las cajas */
+ .dashboard .box-container .box {
+   text-align: center;
+   
+   border: 6px solid #11a3a3;
+   border-radius: 10px;
+   padding: 2rem;
+   transition: transform 0.3s, box-shadow 0.3s;
+   cursor: pointer;
+ }
+ 
+ .dashboard .box-container .box:hover {
+   transform: translateY(-5px);
+   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+ }
+ 
+ /* Título de la caja */
+ .dashboard .box-container .box h3 {
+   font-size: 2.5rem;
+   color: var(--primary-color);
+   margin-bottom: 1rem;
+ }
+ 
+ /* Subtítulo en el título de la caja */
+ .dashboard .box-container .box h3 span {
+   font-size: 1.8rem;
+   color: var(--accent-color);
+   display: block;
+ }
+ 
+ /* Contenido de la caja */
+ .dashboard .box-container .box p {
+   background-color: #333;
+   border-radius: 1rem;
+   font-size: 1.6rem;
+   padding: 1.5rem;
+   border: 1px solid var(--border-color);
+   margin: 1.5rem 0;
+   color: #ffffff;
+ }
+ 
+ /* Botón en la caja */
+ .dashboard .box-container .box button {
+   background-color: var(--primary-color);
+   color: var(--white);
+   font-size: 1.6rem;
+   border: none;
+   border-radius: 1rem;
+   padding: 1rem 2rem;
+   cursor: pointer;
+   transition: background-color 0.3s;
+  
+ }
+ 
+ .dashboard .box-container .box button:hover {
+   background-color: var(--primary-color-hover);
+ }
+ 
+/* Estilos del formulario en la sección de agregar productos */
+.add-products form {
+  margin: 0 auto;
+  max-width: 40rem;
+  background: linear-gradient(45deg, #3498db, #2c3e50);
+  border-radius: 1rem;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  border: 2px solid #3498db;
+  padding: 2rem;
+  text-align: center;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.add-products form:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+}
+
+
+ 
+ /* Estilos del título del formulario */
+ .add-products form h3 {
+   margin-bottom: 2rem;
+   font-size: 2.8rem;
+   color: var(--primary-color);
+   text-transform: capitalize;
+ }
+ 
+ /* Estilos de los campos del formulario */
+ .add-products form .box {
+   background-color: var(--white);
+   border: 6px solid #00ffff;
+   width: 100%;
+   padding: 1.8rem;
+   font-size: 1.6rem;
+   color: var(--text-color);
+   border-radius: 1rem;
+   margin: 1.5rem 0;
+   transition: border-color 0.3s, transform 0.3s;
+}
+
+.add-products form .box:focus-within {
+   border-color: #34db6c; /* Cambio de color del borde al enfocar cualquier elemento dentro de la caja */
+}
+
+ 
+ /* Efecto al enfocar los campos del formulario */
+ .add-products form .box:focus {
+   border-color: var(--primary-color);
+   transform: scale(1.02);
+ }
+ 
+ /* Estilos para el botón de enviar */
+ .add-products form .submit-button {
+   background-color: var(--primary-color);
+   color: var(--white);
+   font-size: 1.8rem;
+   border: none;
+   border-radius: 1rem;
+   padding: 1.5rem 3rem;
+   cursor: pointer;
+   transition: background-color 0.3s;
+ 
+ }
+ 
+ /* Efecto al pasar el mouse sobre el botón de enviar */
+ .add-products form .submit-button:hover {
+   background-color: var(--primary-color-hover);
+ }
+ 
+
+/* Contenedor de cajas en la sección de productos */
+.show-products .box-container {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(33rem, 1fr));
+   gap: 1.5rem;
+   justify-content: center;
+   align-items: flex-start;
+ }
+ 
+ /* Estilos generales de las cajas de productos */
+ .show-products .box-container .box {
+  background: linear-gradient(45deg, #586776, #9c9fa4);
+  border-radius: 1rem;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  padding: 2rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+  overflow: hidden; /* Añadido para mejorar el efecto de sombra */
+}
+
+/* Efecto al pasar el mouse sobre las cajas */
+.show-products .box-container .box:hover {
+  transform: translateY(-8px) scale(1.02); /* Elevación más pronunciada y ligera expansión */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4); /* Sombra más pronunciada */
+}
+
+/* Añadir transición al overflow para un efecto suave */
+.show-products .box-container .box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  border: 4px solid transparent;
+  border-image: linear-gradient(to right, #586776, #9c9fa4) 1; /* Gradiente de colores para el borde */
+  border-image-slice: 1;
+  border-radius: 1rem;
+  transition: border-color 0.3s;
+}
+
+.show-products .box-container .box:hover::before {
+  border-color: #3498db; /* Cambio de color del borde al pasar el ratón por encima */
+}
+
+ 
+ /* Estilos de la imagen del producto */
+ .show-products .box-container .box img {
+  height: 25rem;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease-in-out;
+ }
+ 
+ /* Estilos del nombre del producto */
+ .show-products .box-container .box .name {
+  font-size: 2.5rem;
+  color: var(--text-color);
+  margin: 1rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efecto de borde inferior al pasar el mouse sobre el nombre */
+.show-products .box-container .box .name::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color:  var(--main-color); /* Color del borde */
+  transform: scaleX(0); /* Inicialmente sin ancho */
+  transform-origin: left; /* Desde la izquierda hacia la derecha */
+  transition: transform 0.3s;
+}
+
+.show-products .box-container .box .name:hover::before {
+  transform: scaleX(1); /* Ancho completo al pasar el ratón por encima */
+}
+
+ 
+ /* Estilos del contenedor flexible para categoría y precio */
+ .show-products .box-container .box .flex {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+ }
+ 
+ /* Estilos de la categoría del producto */
+ .show-products .box-container .box .flex .category {
+  font-size: 1.8rem;
+  color: #becbe9;
+  transition: color 0.3s, text-decoration 0.3s, border-color 0.3s;
+  margin-top: 0.5rem;
+  opacity: 0.8;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  padding: 1rem;
+ }
+ .show-products .box-container .box:hover .flex .category {
+ color: #2c3a4a;
+ opacity: 1;
+ transform: translateY(-3px);
+ border-color: #3498db; /* Cambio de color del borde al pasar el ratón */
+ background-color: #38c8ec;
+ }
+
+ /* Estilos del precio del producto */
+ .show-products .box-container .box .flex .price {
+   font-size: 2.5rem;
+   color: #38c8ec;
+   margin: 1rem 0;
+   position: relative;
+   overflow: hidden;
+}
+
+/* Efecto de borde al pasar el mouse sobre el precio */
+.show-products .box-container .box .flex .price::before {
+   content: '';
+   position: absolute;
+   bottom: 0;
+   left: 0;
+   width: 100%;
+   height: 2px;
+   background-color: #38c8ec;
+   transform: scaleX(0); /* Inicialmente sin ancho */
+   transform-origin: right; /* Desde la derecha hacia la izquierda */
+   transition: transform 0.3s;
+}
+
+.show-products .box-container .box .flex .price:hover::before {
+   transform: scaleX(1); /* Ancho completo al pasar el ratón por encima */
+}
+
+ 
+ /* Estilos del valor en el precio del producto */
+ .show-products .box-container .box .flex .price span {
+   font-size: 2rem;
+   color: var(--text-color);
+   margin-left: 0.5rem;
+ }
+ 
+ /* Estilos del botón de detalle del producto */
+ .show-products .box-container .box .details-button {
+   background-color: var(--primary-color);
+   color: var(--white);
+   font-size: 2rem;
+   border: none;
+   border-radius: 1rem;
+   padding: 1.5rem 2.5rem;
+   cursor: pointer;
+   transition: background-color 0.3s;
+   position: absolute;
+   bottom: 1rem;
+   left: 50%;
+   transform: translateX(-50%);
+ }
+ 
+ .show-products .box-container .box .details-button:hover {
+   background-color: var(--primary-color-hover);
+ }
+ 
+
+.update-product form{
+   margin:0 auto;
+   max-width: 50rem;
+   background-color: var(--white);
+   border-radius: .5rem;
+   box-shadow: var(--box-shadow);
+   border:var(--border);
+   padding:2rem;
+}
+
+.update-product form img{
+   height: 25rem;
+   width: 100%;
+   object-fit: contain;
+}
+
+.update-product form .box{
+   background-color: var(--light-bg);
+   border:var(--border);
+   width: 100%;
+   padding:1.4rem;
+   font-size: 1.8rem;
+   color:var(--black);
+   border-radius: .5rem;
+   margin: 1rem 0;
+}
+
+.update-product form textarea{
+   height: 15rem;
+   resize: none;
+}
+
+.update-product form span{
+   font-size: 1.7rem;
+   color:var(--black);
+}
+
+/* Contenedor de cajas en la sección de órdenes realizadas */
+.placed-orders .box-container {
+  display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+   gap: 1.5rem;
+   align-items: flex-start;
+   justify-content: center;
+ }
+ 
+ /* Estilos generales de las cajas de órdenes */
+ .placed-orders .box-container .box {
+  padding: 2rem;
+  border: 6px solid #3498db; /* Borde sólido añadido */
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; /* Añadida transición al borde */
+  text-align: left;
+ }
+ .placed-orders .box-container .box:hover {
+  transform: scale(1.02); /* Aumento de escala al pasar el ratón */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada al pasar el ratón */
+  border-color: #2c3a4a; /* Cambio de color del borde al pasar el ratón */
+}
+
+ 
+ /* Estilos del contenido de las cajas de órdenes */
+ .placed-orders .box-container .box p {
+  line-height: 1.5;
+  margin: 1rem 0;
+  font-size: 2rem;
+  color: #eee7e7; 
+ }
+ 
+ /* Resalte de color en el contenido */
+ .placed-orders .box-container .box p span {
+  color: rgb(131, 186, 223);
+  font-weight: bold;
+  transition: color 0.3s, transform 0.3s; /* Añadida transición al color del texto y a la transformación */
+  display: inline-block; 
+ }
+ 
+ /* Estilos del desplegable */
+ .placed-orders .box-container .box .drop-down {
+   width: 100%;
+   margin: 1rem 0;
+   background: linear-gradient(45deg, #D98880, #8B4513);
+   padding: 1rem 1.4rem;
+   font-size: 2rem;
+   color: var(--text-color);
+   border: var(--border);
+   border-radius: 0.5rem;
+ }
+ 
+
+/* Contenedor de cajas en la sección de mensajes */
+.messages .box-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(33rem, 1fr));
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Estilos generales de las cajas de mensajes */
+.messages .box-container .box {
+ 
+  border: 6px solid #00ffff;
+  border-radius: 10px;
+  padding: 2rem;
+  text-align: left;
+  transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+  position: relative;
+  font-size: 1.6rem;
+  color: #333;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Efecto al pasar el mouse sobre las cajas */
+.messages .box-container .box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+}
+
+/* Estilos del contenido de las cajas de mensajes */
+.messages .box-container .box p {
+  padding: 1rem 0;
+  font-size: 1.8rem;
+  color: #333;
+  line-height: 1.5;
+}
+
+/* Resalte de color en el contenido */
+.messages .box-container .box p span {
+  color: green;
+  font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* media queries  */
+
+@media (max-width:991px){
+
+   html{
+      font-size: 55%;
+   }
+
+}
+
+@media (max-width:768px){
+
+   #menu-btn{
+      display: inline-block;
+   }
+
+   .header .flex .navbar{
+      position: absolute;
+      top:99%; left:0; right:0;
+      border-top: var(--border);
+      border-bottom: var(--border);
+      background-color: var(--white);
+      clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+      transition: .2s linear;
+   }
+
+   .header .flex .navbar.active{
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+   }
+
+   .header .flex .navbar a{
+      display: block;
+      margin:2rem;
+   }
+
+}
+
+@media (max-width:450px){
+
+   html{
+      font-size: 50%;
+   }
+
+   .flex-btn{
+      flex-flow: column;
+      gap:0;
+   }
+
+   .heading{
+      font-size: 3rem;
+   }
+
+   .show-products .box-container{
+      grid-template-columns: 1fr;
+   }
+
+   .placed-orders .box-container{
+      grid-template-columns: 1fr;
+   }
+
+   .accounts .box-container{
+      grid-template-columns: 1fr;
+   }
+
+}
+/* Estilos globales */
+body {
+   font-family: 'Arial', sans-serif;
+   background-color: #f5f5f5;
+   margin: 0;
+   padding: 0;
+    
+ }
+ 
+ .container {
+   max-width: 1200px;
+   margin: 0 auto;
+   padding: 20px;
+ }
+ 
+ /* Encabezado */
+ header {
+   background-color: #333;
+   color: #fff;
+   padding: 10px 0;
+   text-align: center;
+ }
+ 
+ /* Títulos */
+ .heading {
+  text-align: center;
+   margin-bottom: 2.5rem;
+   font-size: 4rem;
+   color: #2c3e50;
+   text-transform: uppercase;
+   position: relative;
+   overflow: hidden; 
+ 
+ }
+ .heading::before,
+ .heading::after {
+   content: '';
+   position: absolute;
+   height: 100%;
+   width: 0;
+   bottom: 0;
+   transition: width 0.3s ease-in-out;
+   border-bottom: 8px solid rgb(52, 219, 122); /* Color del subrayado */
+ }
+ 
+ .heading::before {
+   left: 50%;
+   transform: translateX(-50%);
+ }
+ 
+ .heading::after {
+   right: 50%;
+   transform: translateX(50%);
+ }
+ 
+ .heading:hover::before,
+ .heading:hover::after {
+   width: 30%; /* Ancho del subrayado al pasar el ratón */
+ }
+
+ /* Caja de administrador */
+ .box-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.box {
+  border: 6px solid #3498db;
+  
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+  position: relative; /* Para manejar el sombreado interno */
+  font-size: 18px; 
+}
+
+.box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  
+}
+
+/* Agrega un sombreado interno para resaltar el contenido */
+.box::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  bottom: -5px;
+  left: -5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  pointer-events: none;
+}
+
+ /* Botones */
+ .option-boton {
+  width: 100%;
+   padding: 1rem 3rem;
+   text-align: center;
+   border: none;
+   border-radius: 8px; /* Borde redondeado */
+   font-size: 2rem;
+   color: #000;
+   cursor: pointer;
+   text-transform: capitalize;
+   background: linear-gradient(45deg, #3498db, #1f618d); /* Mix de colores en un degradado */
+   margin-top: 10px;
+   transition: background 0.3s, color 0.3s, transform 0.3s ease-in-out;
+}
+
+.option-boton:hover {
+  background: linear-gradient(45deg, #1f618d, #3498db); /* Cambia el mix de colores al pasar el ratón */
+  color: #fff;
+  transform: scale(1.05);
+}
+
+  
+ 
+
+ /* Mensaje de advertencia */
+ .empty {
+   font-size: 1.5rem; 
+   text-align: center;
+   color: #555;
+   margin: 2rem;
+ }
+ 
+ /* Enlace */
+ a {
+   color: #007bff;
+   text-decoration: none;
+ }
+
+ a:hover {
+   text-decoration: underline;
+ }
+ .logout-boton {
+  position: absolute;
+  bottom: 20px; /* Ajusta según sea necesario para la posición vertical desde la parte inferior */
+  left: 70px; /* Ajusta según sea necesario para la posición horizontal desde la izquierda */
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #d9534f;
+  color: #050505;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.logout-boton:hover {
+  background-color: #c9302c;
+}
+/* Estilos para la sección de mostrar promociones */
+.show-promotions-container {
+  margin-top: 20px;
+}
+
+.promotions-box-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.promotions-box {
+  width: 300px;
+  margin: 10px;
+  box-shadow: 10px 10px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+  overflow: hidden;
+  text-align: center;
+}
+
+.promotions-box:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+.promotions-box img {
+  height: 25rem;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease-in-out;
+}
+.flex {
+  display: flex;
+  
+   align-items: center;
+   margin-bottom: 10px
+}
+
+.price,
+.discount,
+.final-price {
+  font-weight: bold;
+ 
+  font-size: 15px;
+ 
+}
+
+.description {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.flex-btn {
+  margin-top: 10px;
+  text-align: center;
+}
+
+ 
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fc0202; /* Color del texto */
+  background-color: #333232; /* Color de fondo */
+  padding: 8px 12px; /* Espaciado interno */
+  border-radius: 5px; /* Bordes redondeados */
+  transition: background-color 0.3s, transform 0.3s; /* Transiciones suaves */
+  cursor: pointer; /* Cambia el cursor al pasar el ratón */
+  width: fit-content; /* Ajusta el ancho al contenido */
+  display: inline-block; /* Hace que el ancho se ajuste al contenido */
+}
+
+.title:hover {
+  background-color: #3498db; /* Cambio de color al pasar el ratón */
+  color: #fff; /* Cambio de color del texto al pasar el ratón */
+  transform: translateY(-3px); /* Efecto de elevación al pasar el ratón */
+}
+
+
+.add-promotions-container {
+  margin: 0 auto;
+    max-width: 40rem;
+    background: linear-gradient(45deg, #3498db, #2c3e50);
+    border-radius: 1rem;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    border: 2px solid #3498db;
+    padding: 2rem;
+    text-align: center;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.add-promotions-container:hover {
+  transform: scale(1.02);
+}
+
+.add-promotions-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-promotions-form h3 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #3498db;
+}
+
+.input-box {
+  margin-bottom: 20px;
+  padding: 15px;
+  font-size: 1.2rem;
+  border: 4px solid #851515;
+  border-radius: 8px;
+  transition: border-color 0.3s;
+}
+
+.input-box:focus {
+  border-color: #3498db;
+}
+
+textarea {
+  resize: vertical;
+  margin-bottom: 20px;
+  padding: 15px;
+  font-size: 1.2rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  transition: border-color 0.3s;
+}
+
+textarea:focus {
+  border-color: #3498db;
+}
+
+label {
+  margin-bottom: 10px;
+  
+  font-size: 15px;
+  color: #fcfcfc;
+}
+
+.submit-btn {
+  background-color: #3498db;
+  color: #fff;
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: #2980b9;
+}
+/* ... (estilos anteriores) */
+
+/* Estilos para los campos de fecha */
+.add-promotions-form input[type="date"] {
+  margin-bottom: 20px;
+  padding: 15px;
+  font-size: 1.2rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  transition: border-color 0.3s;
+  box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total */
+}
+
+.add-promotions-form input[type="date"]:focus {
+  border-color: #3498db;
+}
+
+/* Estilos para los campos de precio y descuento */
+.add-promotions-form input[type="number"] {
+  margin-bottom: 20px;
+  padding: 15px;
+  font-size: 1.2rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  transition: border-color 0.3s;
+  box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total */
+}
+
+.add-promotions-form input[type="number"]:focus {
+  border-color: #3498db;
+}
+
+ 
+/* Estilos para el formulario de actualización */
+.update-promotion-container {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  background: linear-gradient(45deg, #3498db, #2c3e50);
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.update-promotion-container h3 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #3498db;
+}
+
+.input-box,
+textarea,
+input[type="date"],
+input[type="number"],
+input[type="file"] {
+  margin-bottom: 20px;
+  padding: 15px;
+  font-size: 1.2rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  transition: border-color 0.3s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.input-box:focus,
+textarea:focus,
+input[type="date"]:focus,
+input[type="number"]:focus,
+input[type="file"]:focus {
+  border-color: #3498db;
+}
+
+.submit-btn,
+.volver {
+  background-color: #323233;
+  color: #fff;
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: background-color 0.3s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.submit-btn:hover,
+.volver:hover {
+  background-color: #444749;
+}
