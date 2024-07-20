@@ -62,6 +62,22 @@ if(isset($_SESSION['user_id'])){
          text-decoration: none;
          cursor: pointer;
       }
+
+      .product-price {
+         text-decoration: line-through;
+         font-size: 1.5em; /* Increased font size */
+         color: red; /* Changed color to red */
+      }
+
+      .promo-price {
+         color: #90ee90; /* Light green color */
+         font-size: 1.8em; /* Increased font size */
+      }
+
+      .promo-valid {
+         font-size: 1.5em; /* Increased font size */
+         color: white;
+      }
    </style>
 
 </head>
@@ -84,22 +100,36 @@ if(isset($_SESSION['user_id'])){
    <div class="box-container">
 
       <?php
-         $select_products = $conn->prepare("SELECT * FROM `products`");
+         $select_products = $conn->prepare("SELECT p.*, pr.discount, pr.valid_until 
+                                            FROM `products` p 
+                                            LEFT JOIN `promotions` pr 
+                                            ON p.id = pr.product_id");
          $select_products->execute();
          if($select_products->rowCount() > 0){
             while($fetch_products = $select_products->fetch(PDO::FETCH_ASSOC)){
+               $price = $fetch_products['price'];
+               $promo_price = null;
+               if ($fetch_products['discount']) {
+                  $promo_price = $price - ($price * ($fetch_products['discount'] / 100));
+               }
       ?>
       <form action="" method="post" class="box">
          <input type="hidden" name="pid" value="<?= $fetch_products['id']; ?>">
          <input type="hidden" name="name" value="<?= $fetch_products['name']; ?>">
-         <input type="hidden" name="price" value="<?= $fetch_products['price']; ?>">
+         <input type="hidden" name="price" value="<?= $price; ?>">
          <input type="hidden" name="image" value="<?= $fetch_products['image']; ?>">
          <a href="#" class="fas fa-eye" onclick="openModal('uploaded_img/<?= $fetch_products['image']; ?>')"></a>
          <img src="uploaded_img/<?= $fetch_products['image']; ?>" alt="">
          <a href="category.php?category=<?= $fetch_products['category']; ?>" class="cat"><?= $fetch_products['category']; ?></a>
          <div class="name"><?= $fetch_products['name']; ?></div>
          <div class="flex">
-            <div class="price"><span>$</span><?= $fetch_products['price']; ?></div>
+            <?php if ($promo_price !== null): ?>
+               <div class="promo-price"><span>S/.</span><?= number_format($promo_price, 2); ?></div>
+               <div class="product-price"><span>S/.</span><?= $price; ?></div>
+               <div class="promo-valid">Válido hasta: <?= $fetch_products['valid_until']; ?></div>
+            <?php else: ?>
+               <div class="price"><span>S/.</span><?= $price; ?></div>
+            <?php endif; ?>
          </div>
       </form>
       <?php

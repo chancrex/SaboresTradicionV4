@@ -30,7 +30,13 @@ function print_chart($id, $labels, $data, $background_colors) {
                         tooltip: {
                             callbacks: {
                                 label: function(tooltipItem) {
-                                    return tooltipItem.label + ': ' + tooltipItem.raw.toFixed(2) + '%';
+                                    var dataset = tooltipItem.dataset;
+                                    var total = dataset.data.reduce(function(sum, value) {
+                                        return sum + value;
+                                    }, 0);
+                                    var currentValue = dataset.data[tooltipItem.dataIndex];
+                                    var percentage = ((currentValue / total) * 100).toFixed(2);
+                                    return tooltipItem.label + ': ' + percentage + '%';
                                 }
                             }
                         }
@@ -40,6 +46,23 @@ function print_chart($id, $labels, $data, $background_colors) {
         </script>
     </div>
     <?php
+}
+
+// Función para interpolar colores entre rojo y verde claro
+function interpolate_color($val) {
+    $colors = [
+        1 => [255, 87, 51], // Rojo (#FF5733)
+        2 => [255, 195, 0], // Naranja-Amarillo (#FFC300)
+        3 => [255, 255, 0], // Amarillo (#FFFF00)
+        4 => [173, 255, 47], // Amarillo-Verde (#ADFF2F)
+        5 => [50, 205, 50],  // Verde claro (#32CD32)
+    ];
+
+    if (array_key_exists($val, $colors)) {
+        return 'rgb(' . implode(',', $colors[$val]) . ')';
+    }
+
+    return '#CCCCCC'; // Color gris por defecto si no hay coincidencia
 }
 
 // Función para generar datos de gráfico
@@ -56,17 +79,10 @@ function generate_chart_data($column_name) {
     $data = [];
     $background_colors = [];
 
-    // Colores según el valor de satisfacción
-    $colors = [
-        1 => '#FF5733', // Rojo
-        2 => '#FFC300', // Amarillo
-        3 => '#32CD32'  // Verde
-    ];
-
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         $labels[] = $row[$column_name];
         $data[] = $row['count'];
-        $background_colors[] = isset($colors[$row[$column_name]]) ? $colors[$row[$column_name]] : '#CCCCCC'; // Color gris por defecto si no hay coincidencia
+        $background_colors[] = interpolate_color($row[$column_name]);
     }
 
     return [
@@ -92,6 +108,9 @@ $data_recomendacion_restaurante = generate_chart_data('recomendacion_restaurante
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Encuestas - Gráficos de Torta</title>
+
+    <!-- Incluir Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <link rel="stylesheet" href="../css/admin_style.css">
     <!-- Estilos CSS -->

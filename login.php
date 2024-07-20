@@ -4,34 +4,35 @@ include 'components/connect.php';
 session_start();
 
 if (isset($_SESSION['user_id'])) {
-   $user_id = $_SESSION['user_id'];
+    $user_id = $_SESSION['user_id'];
 } else {
-   $user_id = '';
+    $user_id = '';
 }
 
 if (isset($_POST['submit'])) {
-   // Verificar el token anti-CSRF
-   if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
-      $message[] = '¡Error de seguridad! Intento de CSRF detectado.';
-   } else {
-      // Continuar con el proceso de inicio de sesión
-      $email = $_POST['email'];
-      $email = filter_var($email, FILTER_SANITIZE_EMAIL);
-      $pass = $_POST['pass'];
-      $pass = filter_var($pass, FILTER_SANITIZE_STRING);
+    // Verificar el token anti-CSRF
+    if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+        $message[] = '¡Error de seguridad! Intento de CSRF detectado.';
+    } else {
+        // Continuar con el proceso de inicio de sesión
+        $email = $_POST['email'];
+        $email = filter_var($email, FILTER_SANITIZE_EMAIL);
+        $pass = $_POST['pass'];
+        $pass = filter_var($pass, FILTER_SANITIZE_STRING);
 
-      $select_user = $conn->prepare("SELECT * FROM `users` WHERE email = ?");
-      $select_user->execute([$email]);
-      $row = $select_user->fetch(PDO::FETCH_ASSOC);
+        $select_user = $conn->prepare("SELECT * FROM `users` WHERE email = ?");
+        $select_user->execute([$email]);
+        $row = $select_user->fetch(PDO::FETCH_ASSOC);
 
-      if ($select_user->rowCount() > 0 && password_verify($pass, $row['password'])) {
-         $_SESSION['user_id'] = $row['id'];
-         header('location:index.php');
-         exit();
-      } else {
-         $message[] = '¡Nombre de usuario o contraseña incorrecta!';
-      }
-   }
+        if ($select_user->rowCount() > 0 && password_verify($pass, $row['password'])) {
+            $_SESSION['user_id'] = $row['id'];
+            $_SESSION['user_email'] = $row['email']; // Guardar el correo electrónico en la sesión
+            header('location:index.php');
+            exit();
+        } else {
+            $message[] = '¡Nombre de usuario o contraseña incorrecta!';
+        }
+    }
 }
 
 // Generar un nuevo token anti-CSRF y guardarlo en la sesión

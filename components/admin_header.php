@@ -24,6 +24,8 @@ if(isset($message)){
    <a href="users_accounts.php"><i class="fas fa-users"></i> Usuarios</a>
    <a href="admin_reservas.php"><i class="fas fa-envelope"></i> Reservas</a>
    <a href="encuesta_admin.php"><i class="fas fa-star"></i> Encuestas</a>
+   <a href="promotions.php"><i class="fas fa-bomb"></i> Promociones</a>
+
 
    
 </nav>
